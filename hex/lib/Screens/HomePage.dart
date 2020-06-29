@@ -6,7 +6,7 @@ class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
-double fontSize=10;
+double fontSize=20;
 class _HomeState extends State<Home> {
   bool isShowingMainData;
   int  totalCases;
