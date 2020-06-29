@@ -5,6 +5,7 @@ import "homeScreen.dart";
 void main() => runApp(Covid());
 
 class Covid extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -12,7 +13,16 @@ class Covid extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: new SplashScreen(),
       theme: ThemeData(
-        fontFamily: 'Orbitron'
+        primaryColor: Colors.black,
+        fontFamily: 'Orbitron',
+        backgroundColor: Colors.black,
+        appBarTheme: AppBarTheme(
+          color: Colors.black,
+          iconTheme: IconThemeData(
+            color: Colors.blueAccent
+          ),
+          brightness: Brightness.dark
+        )
       ),
       routes: <String, WidgetBuilder>{
         '/HomeScreen': (BuildContext context) => new HomePage()

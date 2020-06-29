@@ -18,67 +18,24 @@ class _MapState extends State<Map> {
   @override
   Widget build(BuildContext context) {
     List<Widget> body=[
-      Stack(
-        children: <Widget>[
-          (progress != 1.0)
-              ? LinearProgressIndicator(
-              value: progress,
-              backgroundColor: Colors.grey[200],
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.red))
-              : null,
-          Container(
-            height: 1000,
-            width: 600,
-            child:
 
-
-            WebView(
-              initialUrl: "https://covid19.locale.ai/",
-              javascriptMode: JavascriptMode.unrestricted,
-
-              onWebViewCreated: (WebViewController webViewController){
-                _completer.complete(webViewController);
-              },
-
-            ),
-
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  Container(
-                    height: 80,
-                    width: 50,
-                    color: Colors.black54,
-                  ),
-                ],
-              ),
-              Container(
-                height: 30,
-                width: 500,
-                color: Colors.black54,
-              ),
-            ],
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 10,left: 7),
-            height: 50,
-            width: 50,
-            color: Colors.black54,
-          ),
-        ],
-      ),
       Container(
-        color: Colors.black54,
-        child: Center(
-          child: SpinKitWave(
-            color: Colors.white,
-          ),
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child:
+
+
+        WebView(
+          initialUrl: "https://www.trackcorona.live/map",
+          javascriptMode: JavascriptMode.unrestricted,
+
+          onWebViewCreated: (WebViewController webViewController){
+            _completer.complete(webViewController);
+          },
+
         ),
-      )
+
+      ),
     ];
     return body[val];
   }

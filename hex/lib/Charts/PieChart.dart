@@ -60,88 +60,83 @@ class PieChart2State extends State {
 //
 //    }
     getCountary();
-    return AspectRatio(
-      aspectRatio: 1.6,
-      child: Card(
-        color: Colors.transparent,
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(Radius.circular(18)),
-            gradient: LinearGradient(
-              colors: const [
-                Color(0xff0c274c),
-                Color(0xff46426c),
-              ],
-              begin: Alignment.bottomCenter,
-              end: Alignment.topCenter,
-            ),
+    if(deaths==null)
+      return SizedBox();
+    return Card(
+      color: Colors.transparent,
+      child: Container(
+        decoration: BoxDecoration(
+          color:  Colors.blueAccent.withOpacity(0.2),
+          border: Border.all(
+            color: Colors.blueAccent,
+            width: 1, //                   <--- border width here
           ),
-          child: Row(
-            children: <Widget>[
-              const SizedBox(
-                height: 18,
-              ),
-              Expanded(
-                child: AspectRatio(
-                  aspectRatio: 1,
-                  child: PieChart(
-                    PieChartData(
-                        pieTouchData: PieTouchData(touchCallback: (pieTouchResponse) {
-                          setState(() {
-                            if (pieTouchResponse.touchInput is FlLongPressEnd ||
-                                pieTouchResponse.touchInput is FlPanEnd) {
-                              touchedIndex = -1;
-                            } else {
-                              touchedIndex = pieTouchResponse.touchedSectionIndex;
-                            }
-                          });
-                        }),
-                        borderData: FlBorderData(
-                          show: false,
-                        ),
-                        sectionsSpace: 0,
-                        centerSpaceRadius: 40,
-                        sections: showingSections()),
-                  ),
+        ),
+        child: Row(
+          children: <Widget>[
+            const SizedBox(
+              height: 18,
+            ),
+            Expanded(
+              child: AspectRatio(
+                aspectRatio: 1,
+                child: PieChart(
+                  PieChartData(
+                      pieTouchData: PieTouchData(touchCallback: (pieTouchResponse) {
+                        setState(() {
+                          if (pieTouchResponse.touchInput is FlLongPressEnd ||
+                              pieTouchResponse.touchInput is FlPanEnd) {
+                            touchedIndex = -1;
+                          } else {
+                            touchedIndex = pieTouchResponse.touchedSectionIndex;
+                          }
+                        });
+                      }),
+                      borderData: FlBorderData(
+                        show: false,
+                      ),
+                      sectionsSpace: 0,
+                      centerSpaceRadius: 40,
+                      sections: showingSections()),
                 ),
               ),
-              Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const <Widget>[
-                  Indicator(
-                    color: Colors.red,
-                    text: 'Deaths',
-                    isSquare: true,
-                  ),
-                  SizedBox(
-                    height: 4,
-                  ),
-                  Indicator(
-                    color: Colors.purple,
-                    text: 'Confirmed',
-                    isSquare: true,
-                  ),
-                  SizedBox(
-                    height: 4,
-                  ),
-                  Indicator(
-                    color: Colors.green,
-                    text: 'Recovered',
-                    isSquare: true,
-                  ),
-                  SizedBox(
-                    height: 4,
-                  ),
+            ),
+            Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const <Widget>[
+                Indicator(
+                  color: Colors.red,
+                  text: 'Deaths',
+                  isSquare: true,
+                ),
+                SizedBox(
+                  height: 4,
+                ),
+                Indicator(
+                  color: Colors.purple,
+                  text: 'Confirmed',
+                  isSquare: true,
+                ),
+                SizedBox(
+                  height: 4,
+                ),
+                Indicator(
+                  color: Colors.green,
+                  text: 'Recovered',
+                  isSquare: true,
+                ),
+                SizedBox(
+                  height: 4,
+                ),
 
-                ],
-              ),
-              const SizedBox(
-                width: 28,
-              ),
-            ],
-          ),
+              ],
+            ),
+            const SizedBox(
+              width: 28,
+            ),
+          ],
         ),
       ),
     );

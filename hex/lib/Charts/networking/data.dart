@@ -1,11 +1,12 @@
 import 'package:covid/networking/networking.dart';
 class DataModel {
   Future<dynamic> getCurrentData() async {
-    var Url = 'https://coronavirus-tracker-api.herokuapp.com/v2/latest';
+    var Url = 'https://api.thevirustracker.com/free-api?global=stats';
     print(Url);
     NetworkHelp networkHelp = NetworkHelp(url: Url,);
     var wetherData = await networkHelp.getData();
-    return wetherData;
+    print("dhsdhc \n\n\n ${wetherData['results']}");
+    return wetherData['results'];
   }
 
   Future<dynamic> getCountaryData(String name) async {

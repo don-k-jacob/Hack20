@@ -16,6 +16,7 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
+
   @override
 
   Widget build(BuildContext context) {
@@ -23,37 +24,48 @@ class _SearchState extends State<Search> {
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              Container(
-                  padding: EdgeInsets.all(20.0),
-                  child: TextField(
-
-                    onTap: (){
-
-                    },
-                    style: TextStyle(
-                      color: Colors.black,
-
-                    ),
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Colors.white,
-                      icon: Icon(
-                        Icons.location_city,
-                        color: Colors.white,
-                      ),
-                      hintText: 'Enter country name',
-                      hintStyle: TextStyle(
-                        color: Colors.grey,),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                        borderSide: BorderSide.none,
+              SizedBox(
+                height: 30,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 30),
+                child: Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.blueAccent,
+                        width: 1, //                   <--- border width here
                       ),
                     ),
-                    onChanged: (value){
-                      showSearch(context: context, delegate: DataSearch());
+                    child: TextField(
 
-                    },
-                  )
+                      onTap: (){
+
+                      },
+                      style: TextStyle(
+                        color: Colors.black,
+
+                      ),
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Colors.transparent,
+                        icon: Icon(
+                          Icons.location_city,
+                          color: Colors.blueAccent,
+                        ),
+                        hintText: 'Enter country name',
+                        hintStyle: TextStyle(
+                          color: Colors.blueAccent,),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                          borderSide: BorderSide.none,
+                        ),
+                      ),
+                      onChanged: (value){
+                        showSearch(context: context, delegate: DataSearch());
+
+                      },
+                    ),
+                ),
               ),
               LineChartSample1(),
               PieChartSample2(),

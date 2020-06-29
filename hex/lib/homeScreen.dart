@@ -4,12 +4,10 @@ import 'Screens/HomePage.dart';
 import 'constents.dart';
 import 'package:covid/Screens/Maps.dart';
 import 'package:covid/Screens/Search.dart';
-import 'package:covid/Screens/Settings.dart';
 List<Widget> _pages = [
   Home(),
   Map(),
   Search(),
-  Settings(),
 ];
 int _selectedIndex = 0;
 class HomePage extends StatefulWidget {
@@ -63,7 +61,7 @@ class _HomePageState extends State<HomePage> {
                          ),
                        ),
                        child: Center(
-                         child: Text("Globel",style: TextStyle(
+                         child: Text("Global",style: TextStyle(
                            fontFamily: 'Orbitron',
                            fontSize: 20,
                            color:  Colors.blueAccent,
@@ -124,7 +122,8 @@ class _HomePageState extends State<HomePage> {
             Flexible(
               child: Container(
                 height: MediaQuery.of(context).size.height,
-                child: _pages[_selectedIndex],
+                child: SingleChildScrollView(child: _pages[_selectedIndex]),
+
               ),
             )
           ],
@@ -135,14 +134,102 @@ class _HomePageState extends State<HomePage> {
       return Scaffold(
         backgroundColor: Colors.black,
         body: Container(
-        child: Stack(children: [_pages[_selectedIndex],
-          Align(
-            alignment: Alignment.topRight,
-            child: IconButton(icon: Icon(Icons.format_list_numbered_rtl,color: Colors.white,), onPressed: (){
+        child: SafeArea(
+          child: Stack(children: [_pages[_selectedIndex],
+            Align(
+              alignment: Alignment.topRight,
+              child: IconButton(icon: Icon(Icons.list,color: Colors.white,), onPressed: (){
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        backgroundColor: Colors.transparent,
+                        content: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            GestureDetector(
+                              onTap: (){
+                                _onItemTapped(0);
+                                Navigator.pop(context);
 
-            }),
-          ),
-        ]),
+                              },
+                              child: Container(
+                                width: MediaQuery.of(context).size.width/3,
+                                height: MediaQuery.of(context).size.height/10,
+                                decoration: BoxDecoration(
+                                  color:  (_selectedIndex==0)?Colors.blueAccent.withOpacity(0.4):Colors.blueAccent.withOpacity(0.2),
+                                  border: Border.all(
+                                    color: Colors.blueAccent,
+                                    width: 1, //                   <--- border width here
+                                  ),
+                                ),
+                                child: Center(
+                                  child: Text("Global",style: TextStyle(
+                                    fontFamily: 'Orbitron',
+                                    fontSize: 20,
+                                    color:  Colors.blueAccent,
+                                  ),),
+                                ),
+                              ),
+                            ),
+
+                            GestureDetector(
+                              onTap: (){
+                                _onItemTapped(1);
+                                Navigator.pop(context);
+                              },
+                              child: Container(
+                                width: MediaQuery.of(context).size.width/3,
+                                height: MediaQuery.of(context).size.height/10,
+                                decoration: BoxDecoration(
+                                  color:  (_selectedIndex==1)?Colors.blueAccent.withOpacity(0.4):Colors.blueAccent.withOpacity(0.2),
+                                  border: Border.all(
+                                    color: Colors.blueAccent,
+                                    width: 1, //                   <--- border width here
+                                  ),
+                                ),
+                                child: Center(
+                                  child: Text("Map",style: TextStyle(
+                                    fontFamily: 'Orbitron',
+                                    fontSize: 20,
+                                    color:  Colors.blueAccent,
+                                  ),),
+                                ),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: (){
+                                _onItemTapped(2);
+                                Navigator.pop(context);
+
+                              },
+                              child: Container(
+                                width: MediaQuery.of(context).size.width/3,
+                                height: MediaQuery.of(context).size.height/10,
+                                decoration: BoxDecoration(
+                                  color:  (_selectedIndex==2)?Colors.blueAccent.withOpacity(0.4):Colors.blueAccent.withOpacity(0.2),
+                                  border: Border.all(
+                                    color: Colors.blueAccent,
+                                    width: 1, //                   <--- border width here
+                                  ),
+                                ),
+                                child: Center(
+                                  child: Text("country wise",style: TextStyle(
+                                    fontFamily: 'Orbitron',
+                                    fontSize: 20,
+                                    color:  Colors.blueAccent,
+                                  ),),
+                                ),
+                              ),
+                            ),
+                          ],
+                        )
+                      );
+                    });
+              }),
+            ),
+          ]),
+        ),
         ),
       );
   }

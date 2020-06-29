@@ -1,4 +1,5 @@
 import 'package:covid/Charts/networking/data.dart';
+import 'package:covid/Screens/HomePage.dart';
 import 'package:covid/constents.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -58,167 +59,163 @@ class LineChartSample1State extends State<LineChartSample1> {
 //      );
 //    }
     return Container(
-
       color: Colors.black,
       child: Column(
         children: <Widget>[
-          AspectRatio(
-            aspectRatio: 1.2,
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(Radius.circular(18)),
-                gradient: LinearGradient(
-                  colors: const [
-                    Color(0xff2c274c),
-                    Color(0xff46426c),
-                  ],
-                  begin: Alignment.bottomCenter,
-                  end: Alignment.topCenter,
-                ),
-              ),
-              child: Stack(
-                children: <Widget>[
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: <Widget>[
-                      const SizedBox(
-                        height: 37,
-                      ),
-                      const SizedBox(
-                        height: 4,
-                      ),
-                      Text(
-                        '${name}',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 32,
-                            fontWeight: FontWeight.bold,
-                            letterSpacing: 2),
-                        textAlign: TextAlign.center,
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Expanded(
-                        child: Padding(
-                            padding: const EdgeInsets.only(right: 16.0, left: 6.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: <Widget>[
-                                Card(
-                                  elevation: 10,
-                                  color: Colors.transparent,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.rectangle,
-                                      color: Colors.red,
-                                      borderRadius:
-                                      new BorderRadius.all(Radius.circular(10)),
-                                    ),
-                                    height: 200,
-                                    width: 120,
-                                    child: Center(child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: <Widget>[
-                                        Text('Deaths',
-                                            style: TextStyle(fontSize: 20,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.white)
-                                        ),
-                                        Divider(color: Colors.white, thickness: 3,),
-                                        SizedBox(height: 50,),
-                                        Text('${deaths}', style: TextStyle(
-                                            fontSize: 25,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white),)
-                                      ],
-                                    )),
-                                  ),
-                                ),
-                                Card(
-                                  elevation: 10,
-                                  color: Colors.transparent,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.rectangle,
-                                      color: Colors.purple,
-                                      borderRadius:
-                                      new BorderRadius.all(Radius.circular(10)),
-                                    ),
-                                    height: 200,
-                                    width: 120,
-                                    child: Center(child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: <Widget>[
-                                        Text('Confirmed',
-                                            style: TextStyle(fontSize: 20,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.white)
-                                        ),
-                                        Divider(color: Colors.white, thickness: 3,),
-                                        SizedBox(height: 50,),
-                                        Text('${confirmed}', style: TextStyle(
-                                            fontSize: 25,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white),)
-                                      ],
-                                    )),
-                                  ),
-                                ),
-                                Card(
-                                  elevation: 10,
-                                  color: Colors.transparent,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.rectangle,
-                                      color: Colors.green,
-                                      borderRadius:
-                                      new BorderRadius.all(Radius.circular(10)),
-                                    ),
-                                    height: 200,
-                                    width: 120,
-                                    child: Center(child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: <Widget>[
-                                        Text('Recovered',
-                                            style: TextStyle(fontSize: 20,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.white)
-                                        ),
-                                        Divider(color: Colors.white, thickness: 3,),
-                                        SizedBox(height: 50,),
-                                        Text('${recovered}', style: TextStyle(
-                                            fontSize: 25,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white),)
-                                      ],
-                                    )),
-                                  ),
-                                ),
-                              ],
-                            )
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 40,
-                      ),
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(Radius.circular(18)),
+//                gradient: LinearGradient(
+//                  colors: const [
+//                    Color(0xff2c274c),
+//                    Color(0xff46426c),
+//                  ],
+//                  begin: Alignment.bottomCenter,
+//                  end: Alignment.topCenter,
+//                ),
+            ),
+            child: Stack(
+              children: <Widget>[
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
 
-                    ],
-                  ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.refresh,
-                      color: Colors.white.withOpacity(
-                          isShowingMainData ? 1.0 : 0.5),
+                    const SizedBox(
+                      height: 10,
                     ),
-                    onPressed: () {
-                      setState(() {
-                        isShowingMainData = !isShowingMainData;
-                      });
-                    },
-                  )
-                ],
-              ),
+                    Text(
+                      '${name}',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 32,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 2),
+                      textAlign: TextAlign.center,
+                    ),
+
+                    Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 30),
+                        child:SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              Card(
+                                elevation: 10,
+                                color: Colors.transparent,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.rectangle,
+                                    color: Colors.red.withOpacity(0.5),
+                                    borderRadius:
+                                    new BorderRadius.all(Radius.circular(10)),
+                                  ),
+                                  height: MediaQuery.of(context).size.height/5,
+                                  width: MediaQuery.of(context).size.width/5,
+                                  child: Center(child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Text('Deaths',
+                                          style: TextStyle(fontSize: fontSize,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black)
+                                      ),
+                                      Divider(color: Colors.black, thickness: 3,),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(vertical: 20),
+                                        child: Text('${deaths}', style: TextStyle(
+                                            fontSize: fontSize,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black),),
+                                      )
+                                    ],
+                                  )),
+                                ),
+                              ),
+                              Card(
+                                elevation: 10,
+                                color: Colors.transparent,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.rectangle,
+                                    color: Colors.purple.withOpacity(0.5),
+                                    borderRadius:
+                                    new BorderRadius.all(Radius.circular(10)),
+                                  ),
+                                  height: MediaQuery.of(context).size.height/5,
+                                  width: MediaQuery.of(context).size.width/4,
+                                  child: Center(child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Text('Confirmed',
+                                          style: TextStyle(fontSize: fontSize,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black)
+                                      ),
+                                      Divider(color: Colors.black, thickness: 3,),
+
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(vertical: 20),
+                                        child: Text('${confirmed}', style: TextStyle(
+                                            fontSize: fontSize,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black),),
+                                      )
+                                    ],
+                                  )),
+                                ),
+                              ),
+                              Card(
+                                elevation: 10,
+                                color: Colors.transparent,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.rectangle,
+                                    color: Colors.green.withOpacity(0.5),
+                                    borderRadius:
+                                    new BorderRadius.all(Radius.circular(10)),
+                                  ),
+                                  height: MediaQuery.of(context).size.height/5,
+                                  width: MediaQuery.of(context).size.width/4,
+                                  child: Center(child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Text('Recovered',
+                                          style: TextStyle(fontSize: fontSize,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black)
+                                      ),
+                                      Divider(color: Colors.black, thickness: 3,),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(vertical: 20),
+                                        child: Text('${recovered}', style: TextStyle(
+                                            fontSize: fontSize,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black),),
+                                      )
+                                    ],
+                                  )),
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                    ),
+                  ],
+                ),
+                IconButton(
+                  icon: Icon(
+                    Icons.refresh,
+                    color: Colors.white.withOpacity(
+                        isShowingMainData ? 1.0 : 0.5),
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      isShowingMainData = !isShowingMainData;
+                    });
+                  },
+                )
+              ],
             ),
           ),
         ],
