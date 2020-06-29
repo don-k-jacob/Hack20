@@ -64,12 +64,14 @@ class _HomePageState extends State<HomePage> {
                        ),
                        child: Center(
                          child: Text("Globel",style: TextStyle(
+                           fontFamily: 'Orbitron',
                            fontSize: 20,
                            color:  Colors.blueAccent,
                          ),),
                        ),
                      ),
                    ),
+
                    GestureDetector(
                      onTap: (){
                        _onItemTapped(1);
@@ -85,7 +87,8 @@ class _HomePageState extends State<HomePage> {
                          ),
                        ),
                        child: Center(
-                         child: Text("country wise",style: TextStyle(
+                         child: Text("Map",style: TextStyle(
+                           fontFamily: 'Orbitron',
                            fontSize: 20,
                            color:  Colors.blueAccent,
                          ),),
@@ -107,13 +110,14 @@ class _HomePageState extends State<HomePage> {
                          ),
                        ),
                        child: Center(
-                         child: Text("Map",style: TextStyle(
+                         child: Text("country wise",style: TextStyle(
+                           fontFamily: 'Orbitron',
                            fontSize: 20,
                            color:  Colors.blueAccent,
                          ),),
                        ),
                      ),
-                   )
+                   ),
                  ],
               ),
             ),
@@ -131,7 +135,14 @@ class _HomePageState extends State<HomePage> {
       return Scaffold(
         backgroundColor: Colors.black,
         body: Container(
-        child: _pages[_selectedIndex],
+        child: Stack(children: [_pages[_selectedIndex],
+          Align(
+            alignment: Alignment.topRight,
+            child: IconButton(icon: Icon(Icons.format_list_numbered_rtl,color: Colors.white,), onPressed: (){
+
+            }),
+          ),
+        ]),
         ),
       );
   }

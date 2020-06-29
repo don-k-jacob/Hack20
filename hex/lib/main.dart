@@ -9,7 +9,11 @@ class Covid extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       //heme: ThemeData.dark(),
+      debugShowCheckedModeBanner: false,
       home: new SplashScreen(),
+      theme: ThemeData(
+        fontFamily: 'Orbitron'
+      ),
       routes: <String, WidgetBuilder>{
         '/HomeScreen': (BuildContext context) => new HomePage()
       },
@@ -43,7 +47,10 @@ class _SplashScreenState extends State<SplashScreen> {
     return new Scaffold(
       backgroundColor: Colors.black54,
       body: new Center(
-        child: new Image.asset('images/covid.png'),
+        child: Text("COVID-19",style: TextStyle(
+          fontFamily: 'Orbitron',
+          color: Colors.white
+        ),),
       ),
     );
   }

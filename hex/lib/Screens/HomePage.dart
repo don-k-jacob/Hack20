@@ -46,7 +46,7 @@ class _HomeState extends State<Home> {
   }
   @override
   Widget build(BuildContext context) {
-    return LineChartSample1();
+    return DataCard(name);
   }
 
   Container DataCard(String string) {
@@ -96,7 +96,8 @@ class _HomeState extends State<Home> {
                       Expanded(
                         child: Padding(
                             padding: const EdgeInsets.only(right: 16.0, left: 6.0),
-                            child: Row(
+                            child: (MediaQuery.of(context).orientation == Orientation.landscape)?
+                            Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: <Widget>[
                                 Card(
@@ -105,26 +106,26 @@ class _HomeState extends State<Home> {
                                   child: Container(
                                     decoration: BoxDecoration(
                                       shape: BoxShape.rectangle,
-                                      color: Colors.red,
+                                      color: Colors.red.withOpacity(0.5),
                                       borderRadius:
                                       new BorderRadius.all(Radius.circular(10)),
                                     ),
-                                    height: 200,
-                                    width: 120,
+                                    height: MediaQuery.of(context).size.height/5,
+                                    width: MediaQuery.of(context).size.width/4,
                                     child: Center(child: Column(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: <Widget>[
                                         Text('Deaths',
                                             style: TextStyle(fontSize: 20,
                                                 fontWeight: FontWeight.bold,
-                                                color: Colors.white)
+                                                color: Colors.black)
                                         ),
-                                        Divider(color: Colors.white, thickness: 3,),
+                                        Divider(color: Colors.black, thickness: 3,),
                                         SizedBox(height: 50,),
                                         Text('${deaths}', style: TextStyle(
                                             fontSize: 25,
                                             fontWeight: FontWeight.bold,
-                                            color: Colors.white),)
+                                            color: Colors.black),)
                                       ],
                                     )),
                                   ),
@@ -135,26 +136,26 @@ class _HomeState extends State<Home> {
                                   child: Container(
                                     decoration: BoxDecoration(
                                       shape: BoxShape.rectangle,
-                                      color: Colors.purple,
+                                      color: Colors.purple.withOpacity(0.5),
                                       borderRadius:
                                       new BorderRadius.all(Radius.circular(10)),
                                     ),
-                                    height: 200,
-                                    width: 120,
+                                    height: MediaQuery.of(context).size.height/5,
+                                    width: MediaQuery.of(context).size.width/4,
                                     child: Center(child: Column(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: <Widget>[
                                         Text('Confirmed',
                                             style: TextStyle(fontSize: 20,
                                                 fontWeight: FontWeight.bold,
-                                                color: Colors.white)
+                                                color: Colors.black)
                                         ),
-                                        Divider(color: Colors.white, thickness: 3,),
+                                        Divider(color: Colors.black, thickness: 3,),
                                         SizedBox(height: 50,),
                                         Text('${confirmed}', style: TextStyle(
                                             fontSize: 25,
                                             fontWeight: FontWeight.bold,
-                                            color: Colors.white),)
+                                            color: Colors.black),)
                                       ],
                                     )),
                                   ),
@@ -165,26 +166,121 @@ class _HomeState extends State<Home> {
                                   child: Container(
                                     decoration: BoxDecoration(
                                       shape: BoxShape.rectangle,
-                                      color: Colors.green,
+                                      color: Colors.green.withOpacity(0.5),
                                       borderRadius:
                                       new BorderRadius.all(Radius.circular(10)),
                                     ),
-                                    height: 200,
-                                    width: 120,
+                                    height: MediaQuery.of(context).size.height/5,
+                                    width: MediaQuery.of(context).size.width/4,
                                     child: Center(child: Column(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: <Widget>[
                                         Text('Recovered',
                                             style: TextStyle(fontSize: 20,
                                                 fontWeight: FontWeight.bold,
-                                                color: Colors.white)
+                                                color: Colors.black)
                                         ),
-                                        Divider(color: Colors.white, thickness: 3,),
+                                        Divider(color: Colors.black, thickness: 3,),
                                         SizedBox(height: 50,),
                                         Text('${recovered}', style: TextStyle(
                                             fontSize: 25,
                                             fontWeight: FontWeight.bold,
-                                            color: Colors.white),)
+                                            color: Colors.black),)
+                                      ],
+                                    )),
+                                  ),
+                                ),
+                              ],
+                            )
+                                :Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: <Widget>[
+                                Card(
+                                  elevation: 10,
+                                  color: Colors.transparent,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.rectangle,
+                                      color: Colors.red.withOpacity(0.5),
+                                      borderRadius:
+                                      new BorderRadius.all(Radius.circular(10)),
+                                    ),
+                                    height: MediaQuery.of(context).size.height/5,
+                                    width: MediaQuery.of(context).size.width/4,
+                                    child: Center(child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Text('Deaths',
+                                            style: TextStyle(fontSize: 20,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black)
+                                        ),
+                                        Divider(color: Colors.black, thickness: 3,),
+                                        SizedBox(height: 50,),
+                                        Text('${deaths}', style: TextStyle(
+                                            fontSize: 25,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black),)
+                                      ],
+                                    )),
+                                  ),
+                                ),
+                                Card(
+                                  elevation: 10,
+                                  color: Colors.transparent,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.rectangle,
+                                      color: Colors.purple.withOpacity(0.5),
+                                      borderRadius:
+                                      new BorderRadius.all(Radius.circular(10)),
+                                    ),
+                                    height: MediaQuery.of(context).size.height/5,
+                                    width: MediaQuery.of(context).size.width/4,
+                                    child: Center(child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Text('Confirmed',
+                                            style: TextStyle(fontSize: 20,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black)
+                                        ),
+                                        Divider(color: Colors.black, thickness: 3,),
+                                        SizedBox(height: 50,),
+                                        Text('${confirmed}', style: TextStyle(
+                                            fontSize: 25,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black),)
+                                      ],
+                                    )),
+                                  ),
+                                ),
+                                Card(
+                                  elevation: 10,
+                                  color: Colors.transparent,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.rectangle,
+                                      color: Colors.green.withOpacity(0.5),
+                                      borderRadius:
+                                      new BorderRadius.all(Radius.circular(10)),
+                                    ),
+                                    height: MediaQuery.of(context).size.height/5,
+                                    width: MediaQuery.of(context).size.width/4,
+                                    child: Center(child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Text('Recovered',
+                                            style: TextStyle(fontSize: 20,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black)
+                                        ),
+                                        Divider(color: Colors.black, thickness: 3,),
+                                        SizedBox(height: 50,),
+                                        Text('${recovered}', style: TextStyle(
+                                            fontSize: 25,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black),)
                                       ],
                                     )),
                                   ),
